@@ -51,6 +51,9 @@ public class signUpController {
 
             }else{
                 model.addAttribute("user", user);
+
+                user.setRole(user.getRole().substring(5, user.getRole().length())); // setting the role without 'ROLE_' while form is returning back with info.
+
                 session.setAttribute("message", new Message("Please give an unique email address.", "alert-danger"));
             }
 
