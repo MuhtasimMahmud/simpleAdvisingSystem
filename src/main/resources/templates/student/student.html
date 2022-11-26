@@ -44,6 +44,23 @@
                     </div>
                 </form>
 
+
+
+            </div>
+
+            <div class="mt-5">
+                <tr>
+                    <td> <label path="subject">Select your practical slot : </label> </td>
+                    <td><select path="subject" title="SUBJECT" multiple="true" size="13">
+
+                        <option value="Java" label="Java Programming" />
+                        <option value="SQL" label="SQL language" />
+                        <option value="Python" label="Python programming" />
+                        <option value="JavaScript" label="JavaScript" />
+                        <option value="PHP" label="PHP" />
+
+                    </select></td>
+                </tr>
             </div>
 
             <a th:href="@{/logout}" id="logout">Logout</a>
