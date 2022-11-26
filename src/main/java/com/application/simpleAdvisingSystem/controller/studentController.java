@@ -14,10 +14,5 @@ public class studentController {
         return "student/student";
     }
 
-    @RequestMapping("/submittedInfo")
-    public String submitInfo(){
-        return "reditect : student/student";
-    }
-
 
 }
