@@ -1,6 +1,21 @@
-application_body{
-    margin-top: 20%;
-    border-radius: 1px;
-    border-color: orangered;
+.application_body{
+    margin-top: 4%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ec6437;
+    padding: 30px 10px;
+}
 
+.redLine{
+    height: 12px;
+    background-color: #ec6437;
+    margin-bottom: 5px;
+}
+
+.email{
+    color: #ec6437;
+}
+
+select{
+    width: 450px;
 }
