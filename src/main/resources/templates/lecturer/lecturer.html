@@ -41,7 +41,48 @@
 
             </table>
 
+
+            <h2 class="text-center mt-5"> Create a new slot </h2>
+
+
+            <form class="mt-5" action="" th:action="@{/create_slot}" method="post" th:object="${slotRegisteredStudent}">
+
+                <div class="form-row">
+
+                    <!-- slot id -->
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="slot id">
+                    </div>
+
+                    <!-- slot timing -->
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="timing">
+                    </div>
+
+                    <!-- total seats -->
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="total seats">
+                    </div>
+
+                </div>
+
+                <!--Submit and Reset field-->
+                <div class="container text-center mb-2">
+                    <button type="submit" class="btn btn-success mt-4">
+                        create
+                    </button>
+
+                    <button type="reset" class="btn btn-warning mt-4">
+                        Clear
+                    </button>
+                </div>
+
+            </form>
+
+
+
         </div>
+
 
 
 
