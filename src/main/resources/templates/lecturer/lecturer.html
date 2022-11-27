@@ -44,6 +44,12 @@
 
             <h2 class="text-center mt-5"> Create a new slot </h2>
 
+            <!-- Alert message-->
+
+            <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert" role="alert">
+                <p class="text-center" th:text="${session.message.content}"> </p>
+                <th:block th:text="${#session.removeAttribute('message')}"> </th:block>
+            </div>
 
             <form class="mt-5" action="" th:action="@{/create_slot}" method="post" th:object="${newSlot}">
 

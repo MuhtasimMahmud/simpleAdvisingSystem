@@ -7,6 +7,4 @@ public interface slotRepository extends JpaRepository<slot, String> {
 
 
 
-
-
 }
