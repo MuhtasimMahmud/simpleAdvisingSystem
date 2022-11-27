@@ -18,6 +18,7 @@ public class lecturerController {
     }
 
 
+
 //    @RequestMapping("/admin")
 //    public String adminView(Model model){
 //
