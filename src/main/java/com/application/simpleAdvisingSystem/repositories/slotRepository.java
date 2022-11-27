@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface slotRepository extends JpaRepository<slot, String> {
 
 
+
 }
