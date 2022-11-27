@@ -16,6 +16,13 @@
 
         <div class="container">
 
+            <!-- Alert message-->
+
+            <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert" role="alert">
+                <p class="text-center" th:text="${session.message.content}"> </p>
+                <th:block th:text="${#session.removeAttribute('message')}"> </th:block>
+            </div>
+
             <div class="application_body">
 
                 <div class="redLine"> </div>
@@ -31,21 +38,22 @@
 
 
                 <form class="mt-5" action="" th:action="@{/book_slot}" method="post" th:object="${slotRegisteredStudent}">
+
                     <div class="form-row">
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="First name">
+                            <input name="fName" type="text" class="form-control" placeholder="First name">
                         </div>
 
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Last name">
+                            <input name="lName" type="text" class="form-control" placeholder="Last name">
                         </div>
 
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="SID">
+                            <input name="SID" type="text" class="form-control" placeholder="SID">
                         </div>
 
                         <div class="col">
-                            <input type="email" class="form-control" placeholder="Email Address">
+                            <input name="email" type="email" class="form-control" placeholder="Email Address">
                         </div>
                     </div>
 
@@ -53,7 +61,7 @@
 
                     <div class="input-group mt-5 text-center">
 
-                        <select path="slot" class="custom-select" id="inputGroupSelect">
+                        <select name="slot" class="custom-select" id="inputGroupSelect">
                             <option selected>Choose...</option>
                             <option value="slot1">Monday   15:00 - 17:00 (0 seat remaining)</option>
                             <option value="slot2">Tuesday  14:00 - 16:00 (0 seat remaining)</option>
