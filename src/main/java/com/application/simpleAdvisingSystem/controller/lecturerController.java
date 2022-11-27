@@ -1,8 +1,10 @@
 package com.application.simpleAdvisingSystem.controller;
 
 
+import com.application.simpleAdvisingSystem.models.slot;
 import com.application.simpleAdvisingSystem.models.slotRegisteredStudents;
 import com.application.simpleAdvisingSystem.repositories.slotRegisteredStudentRepository;
+import com.application.simpleAdvisingSystem.repositories.slotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,12 +20,19 @@ public class lecturerController {
     @Autowired
     slotRegisteredStudentRepository studentRepository;
 
+    @Autowired
+    slotRepository slots;
+
     @GetMapping("/lecturer")
     public String adminUser(Model model){
 
         List<slotRegisteredStudents> students = studentRepository.findAll();
         System.out.print("list size is : " + students.size());
         model.addAttribute("students", students);
+
+        // ei method eikhane just ekbar run houar porei comment kore disi. naile bar bar
+        // hoite thakbe
+//        addSlots();
 
         return "lecturer/lecturer";
     }
@@ -38,6 +47,14 @@ public class lecturerController {
     // select option oi attribute theke list ke cathch kore oita option e add kore
     // dibo ekkta ekta kore
 
+
+    public void addSlots(){
+        slots.save(new slot("slot1", "Monday   15:00 - 17:00", 8));
+        slots.save(new slot("slot2", "Tuesday  14:00 - 16:00", 8));
+        slots.save(new slot("slot3", "Thursday 11:00 - 13:00", 8));
+        slots.save(new slot("slot4", "Friday   10:00 - 12:00", 8));
+
+    }
 
 
 
