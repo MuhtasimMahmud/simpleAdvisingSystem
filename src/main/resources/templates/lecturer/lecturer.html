@@ -45,23 +45,23 @@
             <h2 class="text-center mt-5"> Create a new slot </h2>
 
 
-            <form class="mt-5" action="" th:action="@{/create_slot}" method="post" th:object="${slotRegisteredStudent}">
+            <form class="mt-5" action="" th:action="@{/create_slot}" method="post" th:object="${newSlot}">
 
                 <div class="form-row">
 
                     <!-- slot id -->
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="slot id">
+                        <input name="slotID" type="text" class="form-control" placeholder="slot id">
                     </div>
 
                     <!-- slot timing -->
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="timing">
+                        <input name="slotTime" type="text" class="form-control" placeholder="timing">
                     </div>
 
                     <!-- total seats -->
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="total seats">
+                        <input name="totalSeat" type="text" class="form-control" placeholder="total seats">
                     </div>
 
                 </div>
