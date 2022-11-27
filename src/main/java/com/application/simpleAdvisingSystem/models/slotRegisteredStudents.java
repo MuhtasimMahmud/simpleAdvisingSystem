@@ -8,11 +8,11 @@ import javax.persistence.Id;
 public class slotRegisteredStudents {
 
     @Id
-    String SID;
-    String fName;
-    String lName;
-    String email;
-    String slot;
+    private String SID;
+    private String fName;
+    private String lName;
+    private String email;
+    private String slot;
 
     public slotRegisteredStudents(){
 
