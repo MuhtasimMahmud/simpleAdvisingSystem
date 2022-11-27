@@ -10,8 +10,5 @@ public interface slotRegisteredStudentRepository extends JpaRepository<slotRegis
     // eikhane slot_registered_user theke findall diye data niye return kore dibo.
 
 
-    public List<slotRegisteredStudents> findAll();
-
-
 
 }

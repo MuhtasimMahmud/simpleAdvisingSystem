@@ -22,20 +22,23 @@ public class lecturerController {
     public String adminUser(Model model){
 
         List<slotRegisteredStudents> students = studentRepository.findAll();
+        System.out.print("list size is : " + students.size());
         model.addAttribute("students", students);
 
         return "lecturer/lecturer";
     }
 
 
+    // slot adding option pore dynamically add kora jabe. apatoto eikhane ekta
+    // manual command diye 4 ta slot thik kore dicchi. pore eta ke dynamic
+    // korte chaile first e eikhane admin ke slot add korar ekta option dibo
+    // then admin slot add kore submit korar pore oi ta slot repo te save kore
+    // dibo. then oi slot repo theke slot gular list catch kore student controller
+    // e ekta attribute a add kore student page e pathay dibo. then student page er
+    // select option oi attribute theke list ke cathch kore oita option e add kore
+    // dibo ekkta ekta kore
 
-//    @RequestMapping("/admin")
-//    public String adminView(Model model){
-//
-//        List<User> user = patientRepository.findAll();
-//        model.addAttribute("patients", patients);
-//        return "admin/admin";
-//    }
+
 
 
 

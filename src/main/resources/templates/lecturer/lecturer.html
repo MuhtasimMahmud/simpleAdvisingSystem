@@ -11,40 +11,44 @@
         <title>Document</title>
     </head>
     <body>
-        <h1> This is admin page</h1>
+        <h1 class="text-center mt-5 mb-5"> This is lecturer page</h1>
+
+
+        <div class="container">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th>SID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Slot</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <tr th:each="student: ${students}">
+                    <th scope="row"> [[${student.SID}]]</th>
+                    <td>[[${student.fName}]]</td>
+                    <td>[[${student.lName}]]</td>
+                    <td>[[${student.email}]]</td>
+                    <td>[[${student.slot}]]</td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
 
 
 
-<!--        <table class="table table-hover">-->
-<!--            <thead class="thead-dark">-->
-<!--            <tr>-->
-<!--                <th>ID</th>-->
-<!--                <th>Name</th>-->
-<!--                <th>Email</th>-->
-<!--                <th>Prescription</th>-->
-<!--                <th>Done?</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
+        <div class="mt-5 text-center">
+            <a th:href="@{/logout}" id="logout">Logout</a>
+        </div>
 
-<!--            <tbody>-->
-
-<!--            <tr th:each="patient : ${patients}">-->
-<!--                <th scope="row"> [[${patient.id}]]</th>-->
-<!--                <td>[[${patient.name}]]</td>-->
-<!--                <td>[[${patient.email}]]</td>-->
-<!--                <td><a th:href="@{/adminPrescription/{email}(email = ${patient.email})}" class="btn btn-warning"> View</a></td>-->
-<!--                <td><a th:href="@{/adminTreatmentDone/{id}(id = ${patient.id})}" class="btn btn-success"> Done </a> </td>-->
-<!--            </tr>-->
-
-<!--            </tbody>-->
-
-<!--        </table>-->
-
-
-
-
-
-        <a th:href="@{/logout}" id="logout">Logout</a>
 
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
