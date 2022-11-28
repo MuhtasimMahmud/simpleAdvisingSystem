@@ -64,7 +64,7 @@
                         <select name="slot" class="custom-select" id="inputGroupSelect">
 
                             <option> choose a slot </option>
-                            <option th:each="slot: ${slots}" th:value="${slot.slotID}">  <span th:text="${slot.slotTime}"> </span> remaining seats :  <span th:text="${slot.totalSeat}"> </span>  </option>
+                            <option th:each="slot: ${slots}" th:value="${slot.slotID}">  <span th:text="${slot.slotTime}"> </span> &nbsp &nbsp  (remaining seats :  <span th:text="${slot.totalSeat}">  </span> ) </option>
 
 <!--                            <option value="slot1">Monday   15:00 - 17:00 (0 seat remaining)</option>-->
 <!--                            <option value="slot2">Tuesday  14:00 - 16:00 (0 seat remaining)</option>-->
