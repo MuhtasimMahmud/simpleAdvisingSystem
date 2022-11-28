@@ -59,14 +59,30 @@ public class studentController {
     @RequestMapping(value = "/book_slot", method  = RequestMethod.POST)
     public String bookSlot(@ModelAttribute("slotRegisteredStudent") slotRegisteredStudents student, Model model, HttpSession session){
 
-        try{
-            studentRepository.save(student);
-            session.setAttribute("message", new Message("Successfully Registered your slot!", "alert-success"));
 
-        }catch (Exception e){
-            e.printStackTrace();
-            session.setAttribute("message", new Message("something went wrong", "alert-danger"));
+        slotRegisteredStudents alreadyBooked = studentRepository.findByEmail(student.getEmail());
+
+        if(alreadyBooked == null){
+
+            // akhono book kore nai
+
+            try{
+                studentRepository.save(student);
+                session.setAttribute("message", new Message("Successfully Registered your slot!", "alert-success"));
+
+            }catch (Exception e){
+                e.printStackTrace();
+                session.setAttribute("message", new Message("something went wrong", "alert-danger"));
+            }
+
+        }else {
+
+            session.setAttribute("message", new Message("sorry, you have already booked a slot by this email.", "alert-danger"));
+
         }
+
+
+
 
         return "redirect:/student";
     }
