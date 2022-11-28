@@ -21,7 +21,7 @@ public class studentController {
 
 
     @Autowired
-    slotRegisteredStudentRepository studentRepository;
+    slotRegisteredStudentRepository slotRegisteredStudentRepository;
 
     @Autowired
     slotRepository slotRepository;
@@ -36,7 +36,7 @@ public class studentController {
         model.addAttribute("slots", slots);
 
         String currentLogInUserEmail = principal.getName();
-        slotRegisteredStudents bookResult = studentRepository.findByEmail(currentLogInUserEmail);
+        slotRegisteredStudents bookResult = slotRegisteredStudentRepository.findByEmail(currentLogInUserEmail);
 
         User currentLogInStudent = userRepository.findByEmail(currentLogInUserEmail);
         model.addAttribute("currentLogInStudent", currentLogInStudent);
@@ -56,20 +56,20 @@ public class studentController {
 
     }
 
+
+
     @RequestMapping(value = "/book_slot", method  = RequestMethod.POST)
     public String bookSlot(@ModelAttribute("slotRegisteredStudent") slotRegisteredStudents student, Model model, HttpSession session){
 
-
-        slotRegisteredStudents alreadyBooked = studentRepository.findByEmail(student.getEmail());
+        slotRegisteredStudents alreadyBooked = slotRegisteredStudentRepository.findByEmail(student.getEmail());
 
         if(alreadyBooked == null){
 
             // akhono book kore nai
 
             try{
-                studentRepository.save(student);
+                slotRegisteredStudentRepository.save(student);
                 session.setAttribute("message", new Message("Successfully Registered your slot!", "alert-success"));
-
             }catch (Exception e){
                 e.printStackTrace();
                 session.setAttribute("message", new Message("something went wrong", "alert-danger"));
@@ -77,33 +77,33 @@ public class studentController {
 
         }else {
 
-            session.setAttribute("message", new Message("sorry, you have already booked a slot by this email.", "alert-danger"));
+            // ei email diye alrady book kore felse ekta slot.
 
+            session.setAttribute("message", new Message("sorry, you have already booked a slot by this email. First cancel it and then book again!", "alert-danger"));
         }
-
-
-
 
         return "redirect:/student";
     }
+
+
 
     @RequestMapping("/cancelBooking")
     public String booking_cancel(Model model, Principal principal, HttpSession session){
 
         String currentLogInUser = principal.getName();
-        slotRegisteredStudents bookResult = studentRepository.findByEmail(currentLogInUser);
+        slotRegisteredStudents bookResult = slotRegisteredStudentRepository.findByEmail(currentLogInUser);
 
         if(bookResult != null){
             // user has booking
 
-            studentRepository.delete(bookResult);
+            slotRegisteredStudentRepository.delete(bookResult);
             session.setAttribute("message", new Message("successfully canceled your booked slot.", "alert-success"));
 
         }else{
             // user has not any booking yet
+
             session.setAttribute("message", new Message("sorry, you don't have any booking yet.", "alert-danger"));
         }
-
 
         return "redirect:/student";
     }

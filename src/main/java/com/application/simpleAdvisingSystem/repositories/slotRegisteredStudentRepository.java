@@ -10,7 +10,6 @@ public interface slotRegisteredStudentRepository extends JpaRepository<slotRegis
 
     public slotRegisteredStudents findByEmail(String email);
 
-    void deleteByEmail(String currentLogInUser);
 
     // eikhane slot_registered_user theke findall diye data niye return kore dibo.
 
