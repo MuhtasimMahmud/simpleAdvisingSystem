@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -24,10 +25,25 @@ public class studentController {
     slotRepository slotRepository;
 
     @GetMapping("/student")
-    public String normalUser(Model model){
+    public String normalUser(Model model, Principal principal){
 
         List<slot> slots = slotRepository.findAll();
         model.addAttribute("slots", slots);
+
+        String currentLogInUser = principal.getName();
+        slotRegisteredStudents bookResult = studentRepository.findByEmail(currentLogInUser);
+
+        String bookingStatus = "";
+
+        if(bookResult != null){
+            // already booked
+            bookingStatus = "You have already booked " + bookResult.getSlot() + ". ";
+        }else{
+            bookingStatus = "You have not booked any slot yet. Only after booking you can cancel here : ";
+        }
+
+        model.addAttribute("bookingStatus", bookingStatus);
+
         return "student/student";
 
     }
@@ -46,7 +62,5 @@ public class studentController {
 
         return "redirect:/student";
     }
-
-
 
 }
