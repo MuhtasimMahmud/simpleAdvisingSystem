@@ -67,20 +67,25 @@ public class studentController {
         if(alreadyBooked == null){
 
             try{
-                slotRegisteredStudentRepository.save(student);
 
-
-                // descreasing seat after booking on that section.
                 String bookedSlotID = student.getSlotID();
                 slot slot = slotRepository.findBySlotID(bookedSlotID);
-                slot.setTotalSeat(slot.getTotalSeat()-1);
 
-                slotRepository.save(slot);
+                if(slot.getTotalSeat() == 0){
 
+                    session.setAttribute("message", new Message("sorry no seat available for this slot. choose another slot.", "alert-danger"));
 
+                }else{
 
+                    slotRegisteredStudentRepository.save(student);
 
-                session.setAttribute("message", new Message("Successfully Registered your slot!", "alert-success"));
+                    // decreasing 1 seat after booking on that slot.
+                    slot.setTotalSeat(slot.getTotalSeat()-1);
+                    slotRepository.save(slot);
+
+                    session.setAttribute("message", new Message("Successfully Registered your slot!", "alert-success"));
+                }
+
             }catch (Exception e){
                 e.printStackTrace();
                 session.setAttribute("message", new Message("something went wrong", "alert-danger"));
@@ -94,6 +99,8 @@ public class studentController {
         return "redirect:/student";
     }
 
+
+//    if(seat == 0) then no booking will be accepted
 
 
     @RequestMapping("/cancelBooking")
