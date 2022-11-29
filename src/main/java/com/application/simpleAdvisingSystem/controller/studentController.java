@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class studentController {
@@ -65,10 +66,20 @@ public class studentController {
 
         if(alreadyBooked == null){
 
-            // akhono book kore nai
-
             try{
                 slotRegisteredStudentRepository.save(student);
+
+
+                // descreasing seat after booking on that section.
+                String bookedSlotID = student.getSlotID();
+                slot slot = slotRepository.findBySlotID(bookedSlotID);
+                slot.setTotalSeat(slot.getTotalSeat()-1);
+
+                slotRepository.save(slot);
+
+
+
+
                 session.setAttribute("message", new Message("Successfully Registered your slot!", "alert-success"));
             }catch (Exception e){
                 e.printStackTrace();
@@ -76,8 +87,6 @@ public class studentController {
             }
 
         }else {
-
-            // ei email diye alrady book kore felse ekta slot.
 
             session.setAttribute("message", new Message("sorry, you have already booked a slot by this email. First cancel it and then book again!", "alert-danger"));
         }
@@ -94,15 +103,23 @@ public class studentController {
         slotRegisteredStudents bookResult = slotRegisteredStudentRepository.findByEmail(currentLogInUser);
 
         if(bookResult != null){
-            // user has booking
+            // user has a booking. now have to cancel it.
 
             slotRegisteredStudentRepository.delete(bookResult);
+
+
+            // increasing seat after canceling booking of that slot.
+            slot slot = slotRepository.findBySlotID(bookResult.getSlotID());
+            slot.setTotalSeat(slot.getTotalSeat()+1);
+            slotRepository.save(slot);
+
+
             session.setAttribute("message", new Message("successfully canceled your booked slot.", "alert-success"));
 
         }else{
             // user has not any booking yet
 
-            session.setAttribute("message", new Message("sorry, you don't have any booking yet.", "alert-danger"));
+            session.setAttribute("message", new Message("sorry, you don't have any booking to cancel.", "alert-danger"));
         }
 
         return "redirect:/student";
