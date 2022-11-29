@@ -24,7 +24,7 @@ public class lecturerController {
     slotRegisteredStudentRepository studentRepository;
 
     @Autowired
-    slotRepository slotsSlotRepository;
+    slotRepository slotRepository;
 
     @GetMapping("/lecturer")
     public String adminUser(Model model){
@@ -40,8 +40,16 @@ public class lecturerController {
     public String createSlot(@ModelAttribute("newSlot") slot slot, Model model, HttpSession session){
 
         try{
-            slotsSlotRepository.save(slot);
-            session.setAttribute("message", new Message("new slot created!", "alert-success"));
+
+            slot existedSlot = slotRepository.findBySlotID(slot.getSlotID());
+
+            if(existedSlot == null){
+                slotRepository.save(slot);
+                session.setAttribute("message", new Message("new slot created!", "alert-success"));
+            }else{
+                session.setAttribute("message", new Message("Sorry, already there are a slot by this id. Choose another slotID!!", "alert-danger"));
+            }
+
         }catch (Exception e){
             e.printStackTrace();
             session.setAttribute("message", new Message("Something went wrong !!" + e.getMessage(), "alert-danger"));
