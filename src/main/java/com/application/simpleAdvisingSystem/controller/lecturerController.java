@@ -35,7 +35,6 @@ public class lecturerController {
         return "lecturer/lecturer";
     }
 
-
     @RequestMapping("/create_slot")
     public String createSlot(@ModelAttribute("newSlot") slot slot, Model model, HttpSession session){
 

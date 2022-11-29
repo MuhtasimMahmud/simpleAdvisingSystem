@@ -99,9 +99,6 @@ public class studentController {
     }
 
 
-//    if(seat == 0) then no booking will be accepted
-
-
     @RequestMapping("/cancelBooking")
     public String booking_cancel(Model model, Principal principal, HttpSession session){
 
@@ -109,22 +106,20 @@ public class studentController {
         slotRegisteredStudents bookResult = slotRegisteredStudentRepository.findByEmail(currentLogInUser);
 
         if(bookResult != null){
+
             // user has a booking. now have to cancel it.
-
             slotRegisteredStudentRepository.delete(bookResult);
-
 
             // increasing seat after canceling booking of that slot.
             slot slot = slotRepository.findBySlotID(bookResult.getSlotID());
             slot.setTotalRemainingSeat(slot.getTotalRemainingSeat()+1);
             slotRepository.save(slot);
 
-
             session.setAttribute("message", new Message("successfully canceled your booked slot.", "alert-success"));
 
         }else{
-            // user has not any booking yet
 
+            // user has not any booking yet
             session.setAttribute("message", new Message("sorry, you don't have any booking to cancel.", "alert-danger"));
         }
 
