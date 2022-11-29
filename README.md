@@ -2,13 +2,16 @@
 
 User Management : Two types of user.
                   
-                  1. Lecturer 
-                  2. Students
+1. Lecturer 
+2. Students
                   
-Featues :   1. Lecturer can create a new slot for student to book for their practical exam.
-            2. Student can choose any slot from the given slots of the lecturer.
-            3. Lecturer can view all the students who has a booked slot.
+Featues :
+
+1. Lecturer can create a new slot for student to book for their practical exam.
+2. Student can choose any slot from the given slots of the lecturer.
+3. Lecturer can view all the students who has a booked slot.
             
+
 
 
 1. Use can register with an email address and his Role in this application.
