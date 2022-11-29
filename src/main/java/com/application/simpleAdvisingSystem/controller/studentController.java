@@ -45,7 +45,7 @@ public class studentController {
 
         if(bookResult != null){
             // already booked
-            bookingStatus = "You have booked your time in " + bookResult.getSlot() + ". ";
+            bookingStatus = "You have booked your time in " + bookResult.getSlotID() + ". ";
         }else{
             bookingStatus = "You have not booked any slot yet. Only after booking you can cancel here : ";
         }

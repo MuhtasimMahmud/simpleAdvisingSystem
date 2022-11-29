@@ -12,18 +12,18 @@ public class slotRegisteredStudents {
     private String fName;
     private String lName;
     private String email;
-    private String slot;
+    private String slotID;
 
     public slotRegisteredStudents(){
 
     }
 
-    public slotRegisteredStudents(String SID, String fName, String lName, String email, String slot) {
+    public slotRegisteredStudents(String SID, String fName, String lName, String email, String slotID) {
         this.SID = SID;
         this.fName = fName;
         this.lName = lName;
         this.email = email;
-        this.slot = slot;
+        this.slotID = slotID;
     }
 
 
@@ -59,11 +59,11 @@ public class slotRegisteredStudents {
         this.email = email;
     }
 
-    public String getSlot() {
-        return slot;
+    public String getSlotID() {
+        return slotID;
     }
 
-    public void setSlot(String slot) {
-        this.slot = slot;
+    public void setSlotID(String slot) {
+        this.slotID = slot;
     }
 }

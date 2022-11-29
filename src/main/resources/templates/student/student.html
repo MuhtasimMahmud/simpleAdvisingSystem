@@ -42,15 +42,15 @@
 
                     <div class="form-row">
                         <div class="col">
-                            <input name="fName" type="text" class="form-control" placeholder="First name">
+                            <input required name="fName" type="text" class="form-control" placeholder="First name">
                         </div>
 
                         <div class="col">
-                            <input name="lName" type="text" class="form-control" placeholder="Last name">
+                            <input required name="lName" type="text" class="form-control" placeholder="Last name">
                         </div>
 
                         <div class="col">
-                            <input name="SID" type="text" class="form-control" placeholder="SID">
+                            <input required name="SID" type="text" class="form-control" placeholder="SID">
                         </div>
 
                         <div class="col">
@@ -62,7 +62,7 @@
 
                     <div class="input-group mt-5 text-center">
 
-                        <select name="slot" class="custom-select" id="inputGroupSelect">
+                        <select required name="slotID" class="custom-select" id="inputGroupSelect">
 
                             <option> choose a slot </option>
                             <option th:each="slot: ${slots}" th:value="${slot.slotID}">  <span th:text="${slot.slotTime}"> </span> &nbsp &nbsp  (remaining seats :  <span th:text="${slot.totalSeat}">  </span> ) </option>
