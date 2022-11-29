@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class studentController {
@@ -71,7 +70,7 @@ public class studentController {
                 String bookedSlotID = student.getSlotID();
                 slot slot = slotRepository.findBySlotID(bookedSlotID);
 
-                if(slot.getTotalSeat() == 0){
+                if(slot.getTotalRemainingSeat() == 0){
 
                     session.setAttribute("message", new Message("sorry no seat available for this slot. choose another slot.", "alert-danger"));
 
@@ -80,7 +79,7 @@ public class studentController {
                     slotRegisteredStudentRepository.save(student);
 
                     // decreasing 1 seat after booking on that slot.
-                    slot.setTotalSeat(slot.getTotalSeat()-1);
+                    slot.setTotalRemainingSeat(slot.getTotalRemainingSeat()-1);
                     slotRepository.save(slot);
 
                     session.setAttribute("message", new Message("Successfully Registered your slot!", "alert-success"));
@@ -117,7 +116,7 @@ public class studentController {
 
             // increasing seat after canceling booking of that slot.
             slot slot = slotRepository.findBySlotID(bookResult.getSlotID());
-            slot.setTotalSeat(slot.getTotalSeat()+1);
+            slot.setTotalRemainingSeat(slot.getTotalRemainingSeat()+1);
             slotRepository.save(slot);
 
 

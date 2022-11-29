@@ -30,12 +30,7 @@ public class lecturerController {
     public String adminUser(Model model){
 
         List<slotRegisteredStudents> students = studentRepository.findAll();
-//        System.out.print("list size is : " + students.size());
         model.addAttribute("students", students);
-
-        // ei method eikhane just ekbar run houar porei comment kore disi. naile bar bar
-        // hoite thakbe
-//        addSlots();
 
         return "lecturer/lecturer";
     }
@@ -54,30 +49,5 @@ public class lecturerController {
 
         return "redirect:/lecturer";
     }
-
-
-    // slot adding option pore dynamically add kora jabe. apatoto eikhane ekta
-    // manual command diye 4 ta slot thik kore dicchi. pore eta ke dynamic
-    // korte chaile first e eikhane admin ke slot add korar ekta option dibo
-    // then admin slot add kore submit korar pore oi ta slot repo te save kore
-    // dibo. then oi slot repo theke slot gular list catch kore student controller
-    // e ekta attribute a add kore student page e pathay dibo. then student page er
-    // select option oi attribute theke list ke cathch kore oita option e add kore
-    // dibo ekkta ekta kore
-
-
-//    public void addSlots(){
-//        slotsSlotRepository.save(new slot("slot1", "Monday   15:00 - 17:00", 8));
-//        slotsSlotRepository.save(new slot("slot2", "Tuesday  14:00 - 16:00", 8));
-//        slotsSlotRepository.save(new slot("slot3", "Thursday 11:00 - 13:00", 8));
-//        slotsSlotRepository.save(new slot("slot4", "Friday   10:00 - 12:00", 8));
-//
-//    }
-
-
-
-
-
-
 
 }

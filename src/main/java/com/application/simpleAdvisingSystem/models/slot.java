@@ -10,17 +10,17 @@ public class slot {
     @Id
     private String slotID;
     private String slotTime;
-    private int totalSeat;
+    private int totalRemainingSeat;
 
 
     public slot(){
 
     }
 
-    public slot(String slotID, String slotTime, int totalSeat) {
+    public slot(String slotID, String slotTime, int totalRemainingSeat) {
         this.slotID = slotID;
         this.slotTime = slotTime;
-        this.totalSeat = totalSeat;
+        this.totalRemainingSeat = totalRemainingSeat;
     }
 
 
@@ -40,11 +40,11 @@ public class slot {
         this.slotTime = slotTime;
     }
 
-    public int getTotalSeat() {
-        return totalSeat;
+    public int getTotalRemainingSeat() {
+        return totalRemainingSeat;
     }
 
-    public void setTotalSeat(int totalSeat) {
-        this.totalSeat = totalSeat;
+    public void setTotalRemainingSeat(int totalSeat) {
+        this.totalRemainingSeat = totalSeat;
     }
 }
