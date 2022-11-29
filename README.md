@@ -11,7 +11,7 @@ Featues :
 2. Student can choose any slot from the given slots of the lecturer.
 3. Lecturer can view all the students who has a booked slot.
             
-
+-- -- -- -- Screenshots and brief explanation
 
 
 1. Use can register with an email address and his Role in this application.
