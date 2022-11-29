@@ -1,5 +1,16 @@
 # simpleAdvisingSystem
 
+User Management : Two types of user.
+                  
+                  1. Lecturer 
+                  2. Students
+                  
+Featues :   1. Lecturer can create a new slot for student to book for their practical exam.
+            2. Student can choose any slot from the given slots of the lecturer.
+            3. Lecturer can view all the students who has a booked slot.
+            
+
+
 1. Use can register with an email address and his Role in this application.
 
 ![1  user registration](https://user-images.githubusercontent.com/58343930/204505628-ed7d6510-7729-4a64-9011-5719ec42ca89.png)
