@@ -1,4 +1,4 @@
-# simpleAdvisingSystem
+# simpleAdvisingSystem (Web application - Spring boot)
 
 User Management : Two types of user.
                   
